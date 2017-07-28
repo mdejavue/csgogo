@@ -1,0 +1,96 @@
+{
+    "_version": "1.1.0",
+    "sap.app": {
+        "_version": "1.1.0",
+        "id": "de.javue.csgogo",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{APP_TITLE}}",
+        "description": "{{APP_DESCRIPTION}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        }
+    },
+    "sap.ui": {
+        "_version": "1.1.0",
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        },
+        "supportedThemes": [
+            "sap_belize"
+        ]
+    },
+    "sap.ui5": {
+        "_version": "1.1.0",
+        "rootView": "de.javue.csgogo.view.App",
+        "dependencies": {
+            "minUI5Version": "1.44",
+            "libs": {
+                "sap.m": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "de.javue.csgogo.i18n.i18n"
+                }
+            }
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "viewPath": "de.javue.csgogo.view",
+                "controlId": "idApp",
+                "controlAggregation": "detailPages",
+                "bypassed": {
+                    "target": [
+                        "master",
+                        "market"
+                    ]
+                },
+                "async": true
+            },
+            "routes": [
+                {
+                    "pattern": "market",
+                    "name": "market",
+                    "target": [
+                        "master",
+                        "market"
+                    ]
+                },
+                {
+                    "pattern": "claim",
+                    "name": "claim",
+                    "target": [
+                        "master",
+                        "claim"
+                    ]
+                }
+            ],
+            "targets": {
+                "master": {
+                    "viewName": "Master",
+                    "viewLevel": 1,
+                    "viewId": "master",
+                    "controlAggregation": "masterPages"
+                },
+                "market": {
+                    "viewName": "Market",
+                    "viewId": "market",
+                    "viewLevel": 2
+                },
+                "claim": {
+                    "viewName": "Claim",
+                    "viewId": "claim",
+                    "viewLevel": 2
+                }
+            }
+        }
+    }
+}
