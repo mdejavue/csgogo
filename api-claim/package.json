@@ -1,0 +1,19 @@
+{
+  "name": "csgogo-api-claim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "debug": "node --inspect index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-session": "^1.15.4",
+    "passport": "^0.3.2",
+    "passport-steam": "^1.0.8",
+    "request": "^2.81.0"
+  }
+}
