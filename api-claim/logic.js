@@ -40,8 +40,8 @@ module.exports = function () {
 
                 // TODO:
                 // check if in the uploaded game the user participated under offer conditions
-                // if user does his first claim, register him with users mapping in contract
                 // send the payout if conditions are met
+                // mark match on blacklist to prevent double spending
 
                 return done(null, identifier);
             });
