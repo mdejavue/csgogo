@@ -2,6 +2,8 @@ pragma solidity ^0.4.15
 
 contract Market {
 
+	const uint MIN_BUDGET = 100000 wei;
+
     address public owner;
     modifier onlyOwner() {
 		if (msg.sender != owner) throw;
@@ -38,10 +40,14 @@ contract Market {
         owner = msg.sender;
     }
 
-    function createOffer(uint budget, uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (bytes32 key) {
+    function createOffer(uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (bytes32 key) {
         // TODO: validate inputs
+		if (msg.value < MIN_BUDGET || msg. value < payout) {
+			throw;
+		}
+
         Condition condition = Condition(mustBeWinner, minPosition, minKills, minMVPs, minScore);
-        Offer offer = Offer(msg.sender, budget, payout, nick, condition, []);
+        Offer offer = Offer(msg.sender, msg.value, payout, nick, condition, []);
 
         bytes32 key = sha256(offer);
         offers[key] = offer;

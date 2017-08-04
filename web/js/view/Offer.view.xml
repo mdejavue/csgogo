@@ -1,0 +1,22 @@
+<mvc:View
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:l="sap.ui.layout"
+   controllerName="de.javue.csgogo.controller.Offer">   
+    <Page title="{i18n>OFFER_TITLE}" showBackButton="true" floatingFooter="true">
+       <l:VerticalLayout class="sapUiContentPadding" width="100%">
+            <Label text="{i18n>OFFER_NICK}"/>
+            <Input />
+            <Label text="{i18n>OFFER_BUDGET}"/>
+            <Input />
+            <Label text="{i18n>OFFER_PAYOUT}"/>
+            <Input />
+       </l:VerticalLayout>      
+       <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Button type="Accept" text="{i18n>OFFER_BTN_PUT}"/>
+            </Toolbar>
+       </footer>      
+    </Page>
+</mvc:View>

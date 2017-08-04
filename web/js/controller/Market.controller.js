@@ -4,6 +4,8 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("de.javue.csgogo.controller.Market", {
-        
+        addOffer : function(oEvent) {
+            this.getRouter().navTo("offer");
+        }
     });
 });

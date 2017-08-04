@@ -65,6 +65,14 @@
                     ]
                 },
                 {
+                    "pattern": "offer",
+                    "name": "offer",
+                    "target": [
+                        "master",
+                        "offer"
+                    ]
+                },
+                {
                     "pattern": "claim",
                     "name": "claim",
                     "target": [
@@ -84,6 +92,11 @@
                     "viewName": "Market",
                     "viewId": "market",
                     "viewLevel": 2
+                },
+                "offer": {
+                    "viewName": "Offer",
+                    "viewId": "offer",
+                    "viewLevel": 3
                 },
                 "claim": {
                     "viewName": "Claim",

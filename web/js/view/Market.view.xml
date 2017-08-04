@@ -3,26 +3,29 @@
    xmlns:mvc="sap.ui.core.mvc"
    controllerName="de.javue.csgogo.controller.Market">   
     <Page title="{i18n>MARKET_TITLE}">
-    <List>
-        <CustomListItem>
-            <Carousel showPageIndicator="false">
-                <pages>
-                    <VBox height="4rem">
+        <headerContent>
+            <Button icon="sap-icon://add" text="{i18n>BTN_ADD_OFFER}" press=".addOffer"/>
+        </headerContent>
+        <List>
+            <CustomListItem>
+                <Carousel showPageIndicator="false">
+                    <pages>
+                        <VBox height="4rem">
+                            <Label text="First offering"/>
+                        </VBox>
+                        <Label text="First offering details"/>
+                    </pages>
+                </Carousel>
+            </CustomListItem>
+            <CustomListItem>
+                <Carousel showPageIndicator="false">
+                    <pages>
                         <Label text="First offering"/>
-                    </VBox>
-                    <Label text="First offering details"/>
-                </pages>
-            </Carousel>
-        </CustomListItem>
-        <CustomListItem>
-            <Carousel showPageIndicator="false">
-                <pages>
-                    <Label text="First offering"/>
-                    <Label text="First offering details"/>
-                </pages>
-            </Carousel>
-        </CustomListItem>
-    </List>
-        
+                        <Label text="First offering details"/>
+                    </pages>
+                </Carousel>
+            </CustomListItem>
+        </List>
+            
     </Page>
 </mvc:View>
