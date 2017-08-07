@@ -39,7 +39,7 @@ contract Market {
 
     function createOffer(uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (uint key) {
         // TODO: validate inputs
-		require(msg.value > MIN_BUDGET || msg.value > payout);
+		require(msg.value > MIN_BUDGET && msg.value > payout);
 
         Condition memory condition = Condition(mustBeWinner, minPosition, minKills, minMVPs, minScore);
         Offer memory offer = Offer(msg.sender, msg.value, payout, nick, condition, new bytes32[](0));
