@@ -54,8 +54,9 @@ contract Market {
         require(offer.payout > offer.budget);
 
         bytes32[] memory claims = offer.claims;
+        bytes32 newClaim = sha256(matchId, playerId);
         for (uint i = 0; i < claims.length; i++) {
-            require(sha256(matchId, playerId) == claims[i]);
+            require(newClaim != claims[i]);
         }
 
         offer.budget -= offer.payout;
