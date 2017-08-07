@@ -7,7 +7,7 @@ contract Market {
     uint offerCount;
     address owner;
     modifier onlyOwner() {
-		require(msg.sender != owner);
+		require(msg.sender == owner);
 		_;
 	}
 
@@ -39,7 +39,7 @@ contract Market {
 
     function createOffer(uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (uint key) {
         // TODO: validate inputs
-		require(msg.value < MIN_BUDGET || msg. value < payout);
+		require(msg.value > MIN_BUDGET || msg.value > payout);
 
         Condition memory condition = Condition(mustBeWinner, minPosition, minKills, minMVPs, minScore);
         Offer memory offer = Offer(msg.sender, msg.value, payout, nick, condition, new bytes32[](0));
@@ -51,7 +51,7 @@ contract Market {
         // function expects that the condition has been checked by owners backend
 
         Offer storage offer = offers[key];
-        require(offer.payout > offer.budget);
+        require(offer.payout < offer.budget);
 
         bytes32[] memory claims = offer.claims;
         bytes32 newClaim = sha256(matchId, playerId);
