@@ -63,4 +63,15 @@ contract Market {
         offer.claims.push(sha256(matchId, playerId));
         payoutAddress.transfer(offer.payout);
     }
+
+    function getCondition (uint key) constant returns (string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) {
+        Offer memory offer = offers[key];
+        Condition memory condition = offer.condition;
+        nick = offer.nick;
+        mustBeWinner = condition.mustBeWinner;
+        minPosition = condition.minPosition;
+        minKills = condition.minKills;
+        minMVPs = condition.minMVPs;
+        minScore = condition.minScore;
+    }
 }
