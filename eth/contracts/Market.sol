@@ -1,75 +1,65 @@
-pragma solidity ^0.4.15
+pragma solidity ^0.4.14;
 
 contract Market {
 
-	const uint MIN_BUDGET = 100000 wei;
+	uint constant MIN_BUDGET = 100000 finney;
 
-    address public owner;
+    uint offerCount;
+    address owner;
     modifier onlyOwner() {
-		if (msg.sender != owner) throw;
+		require(msg.sender != owner);
 		_;
 	}
 
     // keeps book about exact conditions
     struct Condition {
-        bool mustBeWinner,
-        uint minPosition,
-        uint minKills,
-        uint minMVPs,
-        uint minScore
-    }
-
-    // prevents double-claiming
-    struct Claim {
-        string matchId,
-        string playerId
+        bool mustBeWinner;
+        uint minPosition;
+        uint minKills;
+        uint minMVPs;
+        uint minScore;
     }
 
     struct Offer {
-        address creator,
-        uint budget,
-        uint payout,
-        string nick,
-        Condition condition,
-        Claim[] claims
+        address creator;
+        uint budget;
+        uint payout;
+        string nick;
+        Condition condition;
+        bytes32[] claims;
     }
 
-    mapping public (bytes32 => Offer) offers;
+    mapping (uint => Offer) offers;
 
     function Market() {
         owner = msg.sender;
+        offerCount = 0;
+
     }
 
-    function createOffer(uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (bytes32 key) {
+    function createOffer(uint payout, string nick, bool mustBeWinner, uint minPosition, uint minKills, uint minMVPs, uint minScore) payable returns (uint key) {
         // TODO: validate inputs
-		if (msg.value < MIN_BUDGET || msg. value < payout) {
-			throw;
-		}
+		require(msg.value < MIN_BUDGET || msg. value < payout);
 
-        Condition condition = Condition(mustBeWinner, minPosition, minKills, minMVPs, minScore);
-        Offer offer = Offer(msg.sender, msg.value, payout, nick, condition, []);
-
-        bytes32 key = sha256(offer);
-        offers[key] = offer;
-        return key;
+        Condition memory condition = Condition(mustBeWinner, minPosition, minKills, minMVPs, minScore);
+        Offer memory offer = Offer(msg.sender, msg.value, payout, nick, condition, new bytes32[](0));
+        offers[offerCount++] = offer;
+        key = offerCount;
     }
 
-    function claim(bytes32 key, string matchId, string playerId, address payoutAddress) onlyOwner {
+    function claim(uint key, string matchId, string playerId, address payoutAddress) onlyOwner {
         // function expects that the condition has been checked by owners backend
 
-        Offer offer = offers[key];
-        if (offer.payout > offer.budget) {
-            throw;
-        }
+        Offer storage offer = offers[key];
+        require(offer.payout > offer.budget);
 
-        Claim[] claims = offer.claims;
+        bytes32[] memory claims = offer.claims;
         for (uint i = 0; i < claims.length; i++) {
-            if (claims[i].matchId == matchId && claims[i].playerId == playerId) {
-                throw;
-            }
+            require(sha256(matchId, playerId) == claims[i]);
         }
 
         offer.budget -= offer.payout;
-        payoutAddress.send(offer.payout);
+        offer.claims.push(sha256(matchId, playerId));
+        payoutAddress.transfer(offer.payout);
     }
 }
