@@ -4,6 +4,8 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("de.javue.csgogo.controller.Offer", {
-        
+        onNavBack : function(oEvent) {
+            history.go(-1);
+        }
     });
 });

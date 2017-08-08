@@ -9,13 +9,8 @@ sap.ui.define([
 
         init: function() {
             UIComponent.prototype.init.apply(this, arguments);
-            var that = this;
-            var checkReady = setInterval(function() {
-                if (window.web3) {
-                    clearInterval(checkReady);
-                    that.getRouter().initialize();
-                }
-            },100);
+            var that = this;            
+            that.getRouter().initialize();
         }
     });
 });
