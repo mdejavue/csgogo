@@ -53,7 +53,7 @@ contract Market {
         // function expects that the condition has been checked by owners backend
 
         Offer memory offer = offers[key];
-        require(offer.payout <= offer.budget && claims[claimShaId] != key);
+        require(offer.budget > 0 && offer.budget >= offer.payout && claims[claimShaId] != key);
 
         offer.budget -= offer.payout;
         claims[claimShaId] = key;
