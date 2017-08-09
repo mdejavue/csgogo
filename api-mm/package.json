@@ -11,7 +11,6 @@
   "dependencies": {
     "express": "^4.15.3",
     "parse5": "^3.0.2",
-    "request": "^2.81.0",
-    "sequelize": "^4.4.2"
+    "request": "^2.81.0"
   }
 }

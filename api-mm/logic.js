@@ -4,7 +4,7 @@ const express = require('express');
 const request = require('request');
 const parse5 = require('parse5');
 
-const matchRepository = config.matchRepository;
+//const matchRepository = config.matchRepository;
 
 module.exports = function () {
 
@@ -74,7 +74,6 @@ module.exports = function () {
                     parser.stop();
 
                     let richJSON = createRichJSON(aPlayers);
-                    matchRepository.addMatchResult({ id : matchId });
                     res.status(200).send(JSON.stringify(richJSON));
                 }
             }
