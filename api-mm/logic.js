@@ -4,6 +4,8 @@ const express = require('express');
 const request = require('request');
 const parse5 = require('parse5');
 
+const matchRepository = config.matchRepository;
+
 module.exports = function () {
 
     function createRichJSON(aPlayers) {
@@ -71,7 +73,8 @@ module.exports = function () {
                 if (aPlayers.length === 10 && currPlayer.texts.length >= 11) {
                     parser.stop();
 
-                    let richJSON = createRichJSON(aPlayers);                    
+                    let richJSON = createRichJSON(aPlayers);
+                    matchRepository.addMatchResult({ id : matchId });
                     res.status(200).send(JSON.stringify(richJSON));
                 }
             }
