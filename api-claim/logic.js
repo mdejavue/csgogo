@@ -75,13 +75,33 @@ module.exports = function () {
         passport.authenticate('steam', { failureRedirect: '/' }),
         function (req, res) {
             res.redirect('/');
-        });
+    });
 
     app.get('/auth/return',
         passport.authenticate('steam', { failureRedirect: '/' }),
         function (req, res) {
             res.redirect('/');
-        });
+    });
+
+    app.get('/check/:matchId', ensureAuthenticated, function (req, res) {
+
+        // submit match to mm-api
+        // collect result
+        // check against Contract conditions and playerId
+        // if conditions met, add to database with status open
+
+        // return result
+        res.status(200).send(req.user);
+    });
+
+    app.get('/claim/:matchIds', ensureAuthenticated, function (req, res) {
+
+        // read open matches from database
+        // call claimBatch on Contract
+
+        // return result
+        res.status(200).send(req.user);
+    });
 
     return app;
 };

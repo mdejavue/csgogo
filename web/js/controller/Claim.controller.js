@@ -6,12 +6,27 @@ sap.ui.define([
     return BaseController.extend("de.javue.csgogo.controller.Claim", {
         addMatchLink : function(oEvent) {
             this.byId("matchLinkContainer").addContent(sap.ui.xmlfragment("de.javue.csgogo.fragment.MatchLink", this));
+
+            // set busyIndicator
+            this._checkMatch(oEvent.getSource().getParent().getContent()[0].getValue()).then(function() {
+                alert("match processed");
+                // unset busyIndicator
+            });
         },
         
         removeMatchLink : function(oEvent) {
             if (this.byId("matchLinkContainer").getContent().length > 2) {
                 this.byId("matchLinkContainer").removeContent(oEvent.getSource().getParent());
             }
+        },
+
+        _checkMatch : function(sMatchLink) {
+            var sMatchId = sMatchLink;
+            return new Promise(function(resolve, reject) {
+                $.get("http://localhost:3000/match/" + sMatchId, function(data, status) {
+                    resolve();
+                });
+            });
         }
     });
 });
