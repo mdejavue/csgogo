@@ -1,0 +1,19 @@
+---
+applications:
+- name: csgogo-api-claim
+  path: api-claim
+  host: csgogo-api-claim-d059873
+  buildpack: nodejs_buildpack
+  memory: 256M
+
+- name: csgogo-api-mm
+  path: api-mm
+  host: csgogo-api-mm-d059873
+  buildpack: nodejs_buildpack
+  memory: 256M
+
+- name: csgogo-web
+  path: web
+  host: csgogo-web-d059873
+  buildpack: nodejs_buildpack
+  memory: 256M

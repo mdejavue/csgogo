@@ -1,0 +1,25 @@
+{
+  "uaa": {
+    "url": "https://authentication.sap.hana.ondemand.com",
+    "clientid": "sb-bulletinboard-node-d012345",
+    "clientsecret": "iKynDKQV/wHmwuov4IAgsSDvtEc=",
+    "identityzone": "uaa",
+    "verificationkey": "-----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx/jN5v1mp/TVn9nTQoYVIUfCsUDHa3Upr5tDZC7mzlTrN2PnwruzyS7w1Jd+StqwW4/vn87ua2YlZzU8Ob0jR4lbOPCKaHIi0kyNtJXQvQ7LZPG8epQLbx0IIP/WLVVVtB8bL5OWuHma3pUnibbmATtbOh5LksQ2zLMngEjUF52JQyzTpjoQkahp0BNe/drlAqO253keiY63FL6belKjJGmSqdnotSXxB2ym+HQ0ShaNvTFLEvi2+ObkyjGWgFpQaoCcGq0KX0y0mPzOvdFsNT+rBFdkHiK+Jl638Sbim1z9fItFbH9hiVwY37R9rLtH1YKi3PuATMjf/DJ7mUluDQIDAQAB-----END PUBLIC KEY-----",
+     "xsappname": "bulletinboard-node-d012345"
+  },
+  "postgresql": {
+    "dbname": "test",
+    "hostname": "localhost",
+    "password": "test123!",
+    "port": "5432",
+    "uri": "postgresql://testuser:test123!@localhost:5432/test",
+    "username": "testuser"
+  },
+  "rabbitmq": {
+    "hostname": "localhost",
+    "password": "guest",
+    "port": "5672",
+    "uri": "amqp://guest:guest@localhost:5672",
+    "username": "guest"
+  }
+}

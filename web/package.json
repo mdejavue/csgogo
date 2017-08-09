@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "express": "^4.13"
+    "express": "^4.13",
+    "express-session": "^1.15.4",
+    "passport": "^0.3.2",
+    "passport-steam": "^1.0.8",
+    "request": "^2.81.0"
   },
   "scripts": {
     "start": "node index.js"

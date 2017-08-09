@@ -8,8 +8,8 @@ sap.ui.define([
             this.byId("matchLinkContainer").addContent(sap.ui.xmlfragment("de.javue.csgogo.fragment.MatchLink", this));
 
             // set busyIndicator
-            this._checkMatch(oEvent.getSource().getParent().getContent()[0].getValue()).then(function() {
-                alert("match processed");
+            this._checkMatch(oEvent.getSource().getParent().getContent()[0].getValue()).then(function(data) {
+                console.log(data);
                 // unset busyIndicator
             });
         },
@@ -23,8 +23,8 @@ sap.ui.define([
         _checkMatch : function(sMatchLink) {
             var sMatchId = sMatchLink;
             return new Promise(function(resolve, reject) {
-                $.get("http://localhost:3000/match/" + sMatchId, function(data, status) {
-                    resolve();
+                $.get("/check/" + sMatchId, function(data, status) {
+                    resolve(data);
                 });
             });
         }
