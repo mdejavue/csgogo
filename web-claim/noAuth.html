@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta charset="utf-8">
+
+		<title>csgogo Authentication Required</title>
+
+		<script id='sap-ui-bootstrap'
+			src='https://openui5.hana.ondemand.com/resources/sap-ui-core.js'
+			data-sap-ui-theme='sap_belize'
+			data-sap-ui-libs='sap.m'
+			data-sap-ui-xx-bindingSyntax='complex'></script>
+
+		<script>
+
+			sap.ui.controller("de.javue.csgogo.noauth.controller", {
+                authenticate : function(oEvent) {
+                    window.location = "/auth";
+                }
+            });
+            
+			var xml = '<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"                          '
+				+ '              controllerName="de.javue.csgogo.noauth.controller">               '
+				+ '       <Panel headerText="Requires authentication ...">                          '
+				+ '          <Button text="Login with Steam" press=".authenticate"></Button>        '
+                + '       </Panel>                                                                  '
+				+ '    </mvc:View>                                                                  ';
+
+
+			var myView = sap.ui.xmlview({viewContent:xml});
+			myView.placeAt('content');
+
+		</script>
+
+	</head>
+	<body id='content' class='sapUiBody'>
+	</body>
+</html>

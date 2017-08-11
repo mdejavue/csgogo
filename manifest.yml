@@ -12,8 +12,8 @@ applications:
   buildpack: nodejs_buildpack
   memory: 256M
 
-- name: csgogo-web
-  path: web
-  host: csgogo-web-d059873
+- name: csgogo-web-claim
+  path: web-claim
+  host: csgogo-web-claim-d059873
   buildpack: nodejs_buildpack
   memory: 256M
