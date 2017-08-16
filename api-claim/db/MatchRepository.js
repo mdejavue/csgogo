@@ -7,9 +7,11 @@ class MatchRepository {
 
   getAll() { }
 
-  findAdvertisementById(id) { }
+  findMatch(matchId, playerId) { }
 
-  addAdvertisement(mObj) { }
+  addMatchResult(mObj) { }
+
+  deleteAll() { }
 
 }
 

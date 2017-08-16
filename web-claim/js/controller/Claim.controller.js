@@ -4,20 +4,19 @@ sap.ui.define([
     "use strict";
 
     return BaseController.extend("de.javue.csgogo.controller.Claim", {
-        addMatchLink : function(oEvent) {
-            this.byId("matchLinkContainer").addContent(sap.ui.xmlfragment("de.javue.csgogo.fragment.MatchLink", this));
+        onLiveChange : function(oEvent) {
+            var oBusyInd = oEvent.getSource().getParent().getContent()[1];
+            var oResultText = oEvent.getSource().getParent().getContent()[2];
 
-            // set busyIndicator
-            this._checkMatch(oEvent.getSource().getParent().getContent()[0].getValue()).then(function(data) {
-                console.log(data);
-                // unset busyIndicator
-            });
-        },
-        
-        removeMatchLink : function(oEvent) {
-            if (this.byId("matchLinkContainer").getContent().length > 2) {
-                this.byId("matchLinkContainer").removeContent(oEvent.getSource().getParent());
-            }
+            if ( oEvent.getParameter("value").length >= 4 ) {
+                oBusyInd.setVisible(true);
+                this._checkMatch(oEvent.getSource().getParent().getContent()[0].getValue()).then(function(data) {
+                    oResultText.setText(data);
+                    oBusyInd.setVisible(false);
+                });
+
+                this.byId("matchLinkContainer").addContent(sap.ui.xmlfragment("de.javue.csgogo.fragment.MatchLink", this));
+            }            
         },
 
         _checkMatch : function(sMatchLink) {

@@ -4,7 +4,6 @@ const express = require('express');
 const request = require('request');
 const parse5 = require('parse5');
 
-//const matchRepository = config.matchRepository;
 
 module.exports = function () {
 

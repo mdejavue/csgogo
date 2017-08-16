@@ -11,19 +11,28 @@ class PostgresMatchRepository extends MatchRepository {
 
  initialize() {
     this._MatchResult = this._sequelize.import('./models/matchResult.js');
-    return this._sequelize.sync();
+    return this._sequelize.sync({ force: true });
   }
 
  getAll() {
     return this._MatchResult.findAll();
   }
 
- findMatchResultById(id) {
-    return this._MatchResult.findById(id);
+ findMatch(matchId, playerId) {
+    return this._MatchResult.find({
+        where: {
+           matchId: matchId,
+           playerId : playerId
+        }
+    });
   }
 
  addMatchResult(matchResultObj) {
     return this._MatchResult.create(matchResultObj);
+  }
+
+  deleteAll() {
+    return this._MatchResult.destroy({where:{/*no criteria*/}});
   }
 }
 
