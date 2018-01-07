@@ -1,7 +1,0 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns="sap.m">
-    <l:HorizontalLayout class="sapUiContentPadding">
-        <Input />
-        <Button icon="sap-icon://add" press=".addMatchLink"/>
-        <Button icon="sap-icon://delete" press=".removeMatchLink"/>
-    </l:HorizontalLayout>
-</core:FragmentDefinition>

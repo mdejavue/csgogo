@@ -8,12 +8,12 @@
      "xsappname": "bulletinboard-node-d012345"
   },
   "postgresql": {
-    "dbname": "test",
+    "dbname": "csgogo",
     "hostname": "localhost",
-    "password": "test123!",
+    "password": "csgogo",
     "port": "5432",
-    "uri": "postgresql://testuser:test123!@localhost:5432/test",
-    "username": "testuser"
+    "uri": "postgresql://csgogo:csgogo!@localhost:5432/csgogo",
+    "username": "csgogo"
   },
   "rabbitmq": {
     "hostname": "localhost",

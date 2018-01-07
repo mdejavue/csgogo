@@ -63,6 +63,14 @@
                         "master",
                         "claim"
                     ]
+                },
+                {
+                    "pattern": "history",
+                    "name": "history",
+                    "target": [
+                        "master",
+                        "history"
+                    ]
                 }
             ],
             "targets": {
@@ -75,6 +83,11 @@
                 "claim": {
                     "viewName": "Claim",
                     "viewId": "claim",
+                    "viewLevel": 2
+                },
+                "history": {
+                    "viewName": "History",
+                    "viewId": "history",
                     "viewLevel": 2
                 }
             }

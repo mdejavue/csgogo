@@ -7,6 +7,10 @@ sap.ui.define([
         menuNavTo: function(oEvent) {
             var sNavTarget = oEvent.getSource().data("navTarget");
             this.getRouter().navTo(sNavTarget);
+        },
+
+        menuNavToClaim: function(oEvent) {
+            window.location = "http://localhost:8000/";
         }
     });
 });

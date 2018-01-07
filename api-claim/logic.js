@@ -19,11 +19,22 @@ module.exports = function (config) {
         res.status(200).send('db erased');
     });
 
+    app.get('/history/:playerId', function (req, res) {
+        res.header("Access-Control-Allow-Origin", "*");
+
+        // decrypt playerId
+        const playerId = "76561197961610974"; //req.params.playerId;
+
+        matchRepository.findMatches(playerId).then(matchResult => {
+            res.status(200).send(matchResult);
+        });
+    });
+
     app.get('/check/:matchId/:playerId', function (req, res) {
         res.header("Access-Control-Allow-Origin", "*");
 
         // decrypt playerId
-        const playerId = "76561198140305418"; //req.params.playerId;
+        const playerId = "76561197961610974"; //req.params.playerId;
         const matchId = req.params.matchId;
 
 

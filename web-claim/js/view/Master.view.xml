@@ -6,7 +6,9 @@
     <Page>
         <List>
             <items>                
+                <StandardListItem title="Market" data:navTarget="market" type="Navigation" press=".menuNavToMarket"/>
                 <StandardListItem title="Claim" data:navTarget="claim" type="Navigation" press=".menuNavTo"/>
+                <StandardListItem title="History" data:navTarget="history" type="Navigation" press=".menuNavTo"/>
             </items>
         </List>
     </Page>

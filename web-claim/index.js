@@ -21,8 +21,8 @@ passport.deserializeUser(function (obj, done) {
 
 
 passport.use(new SteamStrategy({
-  returnURL: 'http://192.168.157.131:8000/auth/return',
-  realm: 'http://192.168.157.131:8000/',
+  returnURL: 'http://localhost:8000/auth/return',
+  realm: 'http://localhost:8000/',
   profile: false
 },
   function (identifier, profile, done) {
@@ -49,6 +49,14 @@ app.get('/check/:id', ensureAuthenticated, function (req, res) {
   const playerId = req.user.split("/openid/id/")[1];
   // TODO: encrypt req.user with private key or make it safe anyhow
   request('http://localhost:3000/check/' + matchId + "/" + playerId, function(error, response, body) {
+      res.status(200).send(body);
+  });
+});
+
+app.get('/history', ensureAuthenticated, function (req, res) {
+  const playerId = req.user.split("/openid/id/")[1];
+  // TODO: encrypt req.user with private key or make it safe anyhow
+  request('http://localhost:3000/history/' + playerId, function(error, response, body) {
       res.status(200).send(body);
   });
 });

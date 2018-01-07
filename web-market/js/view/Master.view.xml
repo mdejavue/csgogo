@@ -7,7 +7,7 @@
         <List>
             <items>
                 <StandardListItem title="Market" data:navTarget="market" type="Navigation" press=".menuNavTo"/>
-                <StandardListItem title="Claim" data:navTarget="claim" type="Navigation" press=".menuNavTo"/>
+                <StandardListItem title="Claim" data:navTarget="claim" type="Navigation" press=".menuNavToClaim"/>
             </items>
         </List>
     </Page>

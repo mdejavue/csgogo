@@ -1,0 +1,12 @@
+<mvc:View
+   xmlns="sap.m"
+   xmlns:mvc="sap.ui.core.mvc"
+   xmlns:l="sap.ui.layout"
+   xmlns:core="sap.ui.core"
+   controllerName="de.javue.csgogo.controller.History">   
+    <Page title="{i18n>HISTORY_TITLE}">
+       <List items="{history>/items}">
+        <StandardListItem title="{history>matchId}" description="{history>claimed}" info="{history>createdAt}"/>
+       </List>
+    </Page>
+</mvc:View>

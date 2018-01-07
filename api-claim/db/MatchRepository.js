@@ -9,6 +9,8 @@ class MatchRepository {
 
   findMatch(matchId, playerId) { }
 
+  findMatches(playerId) { }
+
   addMatchResult(mObj) { }
 
   deleteAll() { }

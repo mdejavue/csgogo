@@ -71,14 +71,6 @@
                         "master",
                         "offer"
                     ]
-                },
-                {
-                    "pattern": "claim",
-                    "name": "claim",
-                    "target": [
-                        "master",
-                        "claim"
-                    ]
                 }
             ],
             "targets": {
@@ -97,11 +89,6 @@
                     "viewName": "Offer",
                     "viewId": "offer",
                     "viewLevel": 3
-                },
-                "claim": {
-                    "viewName": "Claim",
-                    "viewId": "claim",
-                    "viewLevel": 2
                 }
             }
         }

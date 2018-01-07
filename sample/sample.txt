@@ -1,0 +1,4 @@
+MATCH https://csgo-stats.net/match/2939
+
+2939
+76561197961610974

@@ -26,6 +26,14 @@ class PostgresMatchRepository extends MatchRepository {
         }
     });
   }
+  
+  findMatches(playerId) {
+    return this._MatchResult.findAll({
+        where: {
+           playerId : playerId
+        }
+    });
+  }
 
  addMatchResult(matchResultObj) {
     return this._MatchResult.create(matchResultObj);
